@@ -52,7 +52,7 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
 
-      - uses: action/dowmload-artifact@v4
+      - uses: actions/dowmload-artifact@v4
         with:
           name: skim_ggH
       - name: plot
