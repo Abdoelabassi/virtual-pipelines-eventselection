@@ -7,10 +7,15 @@ jobs:
       - run: echo hello world
   build_skim:
     runs-on: ubuntu-latest
-    container: rootproject/root:6.26.10-conda
+    container: rootproject/root:${{ matrix.version }}
+    strategy:
+      matrix:
+        version: [6.26.10-conda, latest]
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
+
+
       - name: build
         run: |
           COMPILER=$(root-config --cxx)
