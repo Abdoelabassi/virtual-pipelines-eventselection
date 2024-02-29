@@ -32,13 +32,13 @@ skim:
   runs-on: ubuntu-latest
   container: rootproject/root:6.26.10-conda
   steps:
-      - name: checkout repository
-        uses: actions/checkout@v4
+    - name: checkout repository
+      uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v4
-        with:
-          name: skim6.26.10-conda
-      - name: skim
-        run: |
-          chmod +x ./skim
-          ./skim
+    - uses: actions/download-artifact@v4
+      with:
+        name: skim6.26.10-conda
+    - name: skim
+      run: |
+        chmod +x ./skim
+        ./skim
