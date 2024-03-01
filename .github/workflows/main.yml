@@ -61,8 +61,10 @@ jobs:
           python histograms.py skim_ggH.root ggH hist_ggH.root
       - uses: actions/upload-artifact@v4
         with:
-          name: hist_ggH
-          path: hist_gHH.root
+          name: histograms
+          path: |
+             hist_gHH.root
+             skim_ggH.log
   test:
     needs: [skim, plot]
     runs-on: ubuntu-latest
@@ -71,12 +73,14 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v4
+      - name: download from skim
+        uses: actions/download-artifact@v4
         with:
           name: skim_ggH
-      - uses: actions/download-artifact@v4
+      - name: download from plot
+        uses: actions/download-artifact@v4
         with:
-          name: hist_ggH
+          name: histograms
       
 
       - name: test cutflow
